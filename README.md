@@ -22,3 +22,4 @@ Add a new dependency by editing requirements.in and running: ```pip-compile requ
 
 Provide the directory containing the numbered PDFs:
 ```python merge_pdfs.py /path/to/your/pdf_directory```
+
