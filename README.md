@@ -1,24 +1,33 @@
 # PDF Merger
 
-This script merges a set of numbered PDF files located in a single directory. Filenames must begin with numeric names such as 1.pdf, 2.pdf, 3.pdf, etc. The script sorts them by their numeric value and produces a single file named merged.pdf inside the same directory.
+Utilities for merging PDFs and converting/compressing images into PDFs.
 
 ## Environment Setup
 
-This repository is managed by conda. Conda should be installed before hand.
+This repository is managed by [uv](https://docs.astral.sh/uv/). uv should be installed beforehand.
 
-Create the environment: ```conda env create -f environment.yaml```
+Install dependencies and create the virtual environment: ```uv sync```
 
-Activate: environment: ```conda activate pdfmerger```
-
-### Dependency Management
-
-Dependencies are maintained with `pip`.
-
-Install: ```pip install -r requirements.txt```
-
-Add a new dependency by editing requirements.in and running: ```pip-compile requirements.in```
+Add a new dependency: ```uv add <package>```
 
 ## Usage
 
-Provide the directory containing the numbered PDFs:
-```python merge_pdfs.py /path/to/your/pdf_directory```
+### Merge PDFs
+
+Merges a set of numbered PDF files located in a single directory. Filenames must begin with numeric names such as 1.pdf, 2.pdf, 3.pdf, etc. The script sorts them by their numeric value and produces a single file named merged.pdf inside the same directory.
+
+```uv run python pdfmerger.py /path/to/your/pdf_directory```
+
+### Compress an image into a PDF
+
+Compresses an image (downsamples and re-encodes it) and saves the result as a PDF.
+
+```uv run python image_to_pdf.py /path/to/image.jpg /path/to/output.pdf [quality]```
+
+`quality` is optional (1-95, default 50); lower values produce smaller files.
+
+### Extract text from a PDF
+
+Extracts the text content of a PDF and writes it to a text file.
+
+```uv run python pdf_to_text.py /path/to/input.pdf /path/to/output.txt```
